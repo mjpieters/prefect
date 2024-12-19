@@ -15,6 +15,7 @@ from typing import (
     TYPE_CHECKING,
     Any,
     AsyncGenerator,
+    Callable,
     Dict,
     Generator,
     Mapping,
@@ -675,4 +676,5 @@ GLOBAL_SETTINGS_CONTEXT: SettingsContext = root_settings_context()  # type: igno
 
 # 2024-07-02: This surfaces an actionable error message for removed objects
 # in Prefect 3.0 upgrade.
-__getattr__ = getattr_migration(__name__)
+
+__getattr__: Callable[[str], Any] = getattr_migration(__name__)
